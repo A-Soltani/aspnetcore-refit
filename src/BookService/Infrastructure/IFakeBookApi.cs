@@ -1,13 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using BookService.Controllers;
 using Refit;
 
-namespace BookService.Controllers
+namespace BookService.Infrastructure
 {
     public interface IFakeBookApi
     {
         [Get("/db")]
-        Task<IEnumerable<Book>> GetBooks();
+        Task<Result> GetBooks();
+    }
+
+    public class Result
+    {
+        public IEnumerable<Book> Books { get; set; }
     }
 }
